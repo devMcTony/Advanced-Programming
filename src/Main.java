@@ -143,10 +143,61 @@ public class Main {
         // Please Take a look at all the 12 transaction now and compare with the outputs of the Transaction3 class
     }
 
+/**
+     * Test the WithdrawalTransaction class.
+     */
+    public static void testWithdrawalTransaction() {
+        // Create a bank account with an initial balance of 500
+        BankAccount account = new BankAccount(500);
+
+        // Create a withdrawal transaction
+        Calendar date = new GregorianCalendar(2024, Calendar.NOVEMBER, 29);
+        WithdrawalTransaction withdrawal = new WithdrawalTransaction(200, date);
+
+        // Apply the withdrawal
+        System.out.println("Initial Balance: " + account.getBalance());
+        withdrawal.apply(account);
+        System.out.println("Balance after withdrawal: " + account.getBalance());
+
+        // Reverse the withdrawal
+        boolean reversed = withdrawal.reverse(account);
+        if (reversed) {
+            System.out.println("Transaction reversed successfully.");
+        } else {
+            System.out.println("Transaction reversal failed.");
+        }
+
+        // Display the final balance
+        System.out.println("Final Balance: " + account.getBalance());
+    }
+
+    /**
+     * Test the DepositTransaction class.
+     */
+    public static void testDepositTransaction() {
+        // Create a bank account with an initial balance of 300
+        BankAccount account = new BankAccount(300);
+
+        // Create a deposit transaction
+        Calendar date = new GregorianCalendar(2024, Calendar.NOVEMBER, 29);
+        DepositTrasaction deposit = new DepositTrasaction(150, date);
+
+        // Apply the deposit
+        System.out.println("Initial Balance: " + account.getBalance());
+        deposit.apply(account);
+        System.out.println("Balance after deposit: " + account.getBalance());
+
+        // Print transaction details
+        deposit.printTransactionDetails();
+    }
+
 
     public static void main(String[] args) {
         // This is the client code
         // Uncomment the following lines to test the class which you would like to test
+
+        testWithdrawalTransaction();
+        testDepositTransaction();
 
         // testTransaction1()
         // testTransaction2()

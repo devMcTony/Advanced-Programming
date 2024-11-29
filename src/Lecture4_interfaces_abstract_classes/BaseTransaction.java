@@ -32,6 +32,12 @@ public abstract class BaseTransaction implements TransactionInterface {
         return amount; // Because we are dealing with Value types we need not worry about what we return
     }
 
+    @Override
+    public void apply(BankAccount ba) {
+       System.out.println("BaseTransaction: Applying a generic transaction.");
+       // Default implementation, can be replaced in subclasses
+    }
+
     /**
      * getDate()
      * @return Calendar Object
@@ -47,5 +53,4 @@ public abstract class BaseTransaction implements TransactionInterface {
     }
     // Method to print a transaction receipt or details
     public abstract void printTransactionDetails();
-    public abstract void apply(BankAccount ba) throws InsufficeintFundsError;
 }
